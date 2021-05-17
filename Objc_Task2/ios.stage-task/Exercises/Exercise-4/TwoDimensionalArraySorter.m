@@ -40,7 +40,12 @@
     NSLog(@"stringsSorted: %@", stringsSorted);
     
     if (stringsSorted.count != 0 && numbersSorted.count != 0) {
-        NSArray *finalArray = [[NSArray alloc] initWithObjects:numbersSorted, stringsSorted, nil];
+        NSMutableArray *backArray = [[NSMutableArray alloc] init];
+        for (long int y = stringsSorted.count - 1; y < stringsSorted.count; y--) {
+            [backArray addObject:stringsSorted[y]];
+        }
+            
+        NSArray *finalArray = [[NSArray alloc] initWithObjects:numbersSorted, backArray, nil];
         return finalArray;
     }
     
